@@ -1,10 +1,4 @@
-import {
-  Box,
-  Container,
-  Typography,
-  IconButton,
-  Divider,
-} from "@mui/material";
+import { Box, Container, Typography, IconButton, Divider } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -12,97 +6,136 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 
 function Footer() {
   return (
-    <Box sx={{ bgcolor: "#0b0f3c", color: "white", py: 4 }}>
-      <Container maxWidth="lg">
-        {/* TOP ROW */}
+    <Box sx={{ py: 6, position: "relative" }}>
+      <Container maxWidth="lg" sx={{ position: "relative" }}>
+
+        {/* Top-left vector */}
+        <Box
+          component="img"
+          src="/Vector.png"
+          alt="vector"
+          sx={{
+            position: "absolute",
+            bottom: 30,
+            left: -70,
+            width: 70,
+            zIndex: 0,
+          }}
+        />
+
+        {/* Bottom-right vector */}
+        <Box
+          component="img"
+          src="/Vector.png"
+          alt="vector"
+          sx={{
+            position: "absolute",
+            top: -70,
+            right: -20,
+            width: 60,
+            transform: "rotate(180deg)",
+            zIndex: 0,
+          }}
+        />
+
+        {/* FOOTER BOX */}
         <Box
           sx={{
-            display: "grid",
-            gridTemplateColumns: "auto 1fr auto",
-            alignItems: "center",
+            bgcolor: "#0b0f3c",
+            color: "white",
+            borderRadius: 4,
+            px: 5,
+            py: 4,
+            position: "relative",
+            zIndex: 1,
           }}
         >
-          {/* LOGO */}
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <img src="/logo 1.png" alt="logo" height={36} />
-            <Typography fontWeight={700} fontSize={20}>
-              <span style={{ color: "#4a5cff" }}>Code</span>
-              <span style={{ color: "#ff3c3c" }}>Arena</span>
-            </Typography>
-          </Box>
+          {/* MAIN ROW */}
+          <Box sx={{ display: "flex", gap: 6 }}>
 
-          {/* NAV LINKS */}
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 4,
-            }}
-          >
-            {["Home", "About Us", "Prepare", "Dashboard"].map(function(item) {
-              return (
-                <Typography
-                  key={item}
-                  sx={{
-                    fontSize: 14,
-                    cursor: "pointer",
-                    "&:hover": { color: "#4a5cff" },
-                  }}
-                >
-                  {item}
+            {/* LEFT COLUMN */}
+            <Box sx={{ minWidth: 200 }}>
+              <img src="/logo 1.png" alt="logo" width="90" />
+              <Typography fontWeight={900} fontSize={22} mt={-3}>
+                <span style={{ color: "#4a5cff" }}>Code</span>
+                <span style={{ color: "#ff3c3c" }}>Arena</span>
+              </Typography>
+            </Box>
+
+            {/* RIGHT COLUMN */}
+            <Box sx={{ flexGrow: 1 }}>
+              {/* TOP ROW */}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                {/* NAV */}
+                <Box sx={{ display: "flex", gap: 4 }}>
+                  {["Home", "About Us", "Prepare", "Dashboard"].map((item) => (
+                    <Typography
+                      key={item}
+                      sx={{
+                        fontSize: 15,
+                        cursor: "pointer",
+                        "&:hover": { color: "#4a5cff" },
+                      }}
+                    >
+                      {item}
+                    </Typography>
+                  ))}
+                </Box>
+
+                {/* SOCIAL ICONS */}
+                <Box sx={{ display: "flex", gap: 1.5 }}>
+                  <IconButton sx={{ color: "white" }}>
+                    <FacebookIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton sx={{ color: "white" }}>
+                    <TwitterIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton sx={{ color: "white" }}>
+                    <InstagramIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton sx={{ color: "white" }}>
+                    <YouTubeIcon fontSize="small" />
+                  </IconButton>
+                </Box>
+              </Box>
+
+              {/* DIVIDER */}
+              <Divider sx={{ my: 2.5, bgcolor: "rgba(255,255,255,0.25)" }} />
+
+              {/* BOTTOM ROW */}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Box sx={{ display: "flex", gap: 4 }}>
+                  {["Privacy Policy", "Terms of Use", "Legal"].map((item) => (
+                    <Typography
+                      key={item}
+                      sx={{
+                        fontSize: 13,
+                        color: "white", // Changed to white
+                      }}
+                    >
+                      {item}
+                    </Typography>
+                  ))}
+                </Box>
+
+                <Typography fontSize={13} color="white"> 
+                  © 2024 Codegnan Destination. All rights reserved.
                 </Typography>
-              );
-            })}
+              </Box>
+            </Box>
           </Box>
-
-          {/* SOCIAL ICONS */}
-          <Box>
-            <IconButton sx={{ color: "white" }}>
-              <FacebookIcon fontSize="small" />
-            </IconButton>
-            <IconButton sx={{ color: "white" }}>
-              <TwitterIcon fontSize="small" />
-            </IconButton>
-            <IconButton sx={{ color: "white" }}>
-              <InstagramIcon fontSize="small" />
-            </IconButton>
-            <IconButton sx={{ color: "white" }}>
-              <YouTubeIcon fontSize="small" />
-            </IconButton>
-          </Box>
-        </Box>
-
-        {/* DIVIDER */}
-        <Divider sx={{ my: 2, bgcolor: "rgba(255,255,255,0.25)" }} />
-
-        {/* BOTTOM ROW */}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Box sx={{ display: "flex", gap: 3 }}>
-            {["Privacy Policy", "Terms of Use", "Legal"].map(function(item) {
-              return (
-                <Typography
-                  key={item}
-                  sx={{
-                    fontSize: 13,
-                    color: "rgba(255,255,255,0.7)",
-                    cursor: "pointer",
-                  }}
-                >
-                  {item}
-                </Typography>
-              );
-            })}
-          </Box>
-
-          <Typography fontSize={13} color="rgba(255,255,255,0.7)">
-            © 2024 Codegnan Destination. All rights reserved.
-          </Typography>
         </Box>
       </Container>
     </Box>

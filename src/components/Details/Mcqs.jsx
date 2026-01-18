@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Box,Typography,Card,CardContent,Radio,RadioGroup,FormControlLabel,Button,Grid} from "@mui/material";
+import {Box,Typography,Card,CardContent,Radio,RadioGroup,FormControlLabel,Button,} from "@mui/material";
 
 const questions = [
   { id: 1 },
@@ -45,7 +45,7 @@ function MCQPage() {
             }}
           >
             <CardContent>
-              <Typography variant="body1" sx={{ mb: 2 }}>
+              <Typography variant="body1" sx={{ mb: 3 }}>
                 <strong>{q.id}.</strong> Eesha Works For ISRO Where She Is Involved
                 In A Mission To Intercept A Comet That Is Likely To Collide
                 Within 1 Month. She Is Developing A C Program To Calculate The
@@ -55,49 +55,62 @@ function MCQPage() {
                 Use For The Variables In Her Equation?
               </Typography>
 
-              <RadioGroup value={selected[q.id] || ""}>
-                <Grid container>
-                  <Grid item xs={6}>
-                    <FormControlLabel
-                      value="double1"
-                      control={
-                        <Radio
-                          onClick={() => handleClick(q.id, "double1")}
-                        />
-                      }
-                      label="Double"
+                   {/* Radio buttons */}
+              <RadioGroup
+                value={selected[q.id] || ""}
+                row
+                sx={{
+                  flexWrap: "wrap",
+                  gap: "24px",
+                }}
+              >
+                <FormControlLabel
+                  value="opt1"
+                  control={
+                    <Radio
+                      checked={selected[q.id] === "opt1"}
+                      onClick={() => handleClick(q.id, "opt1")}
                     />
-                    <FormControlLabel
-                      value="double2"
-                      control={
-                        <Radio
-                          onClick={() => handleClick(q.id, "double2")}
-                        />
-                      }
-                      label="Double"
+                  }
+                  label="Double"
+                  sx={{ width: "45%" }}
+                />
+
+                <FormControlLabel
+                  value="opt2"
+                  control={
+                    <Radio
+                      checked={selected[q.id] === "opt2"}
+                      onClick={() => handleClick(q.id, "opt2")}
                     />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <FormControlLabel
-                      value="double3"
-                      control={
-                        <Radio
-                          onClick={() => handleClick(q.id, "double3")}
-                        />
-                      }
-                      label="Double"
+                  }
+                  label="Long Double"
+                  sx={{ width: "45%" }}
+                />
+
+                <FormControlLabel
+                  value="opt3"
+                  control={
+                    <Radio
+                      checked={selected[q.id] === "opt3"}
+                      onClick={() => handleClick(q.id, "opt3")}
                     />
-                    <FormControlLabel
-                      value="double4"
-                      control={
-                        <Radio
-                          onClick={() => handleClick(q.id, "double4")}
-                        />
-                      }
-                      label="Double"
+                  }
+                  label="Float"
+                  sx={{ width: "45%" }}
+                />
+
+                <FormControlLabel
+                  value="opt4"
+                  control={
+                    <Radio
+                      checked={selected[q.id] === "opt4"}
+                      onClick={() => handleClick(q.id, "opt4")}
                     />
-                  </Grid>
-                </Grid>
+                  }
+                  label="All Of These"
+                  sx={{ width: "45%" }}
+                />
               </RadioGroup>
             </CardContent>
           </Card>

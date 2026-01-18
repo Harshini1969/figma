@@ -1,8 +1,7 @@
 import {Box,Typography,Card,CardContent,Avatar,Chip,} from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import FormatQuoteRoundedIcon from "@mui/icons-material/FormatQuoteRounded";
 
-            /* ========= SINGLE CARD ========== */
+/* ========= SINGLE CARD ========== */
 function TestimonialCard(props) {
   const offset = props.offset || 0;
 
@@ -21,7 +20,7 @@ function TestimonialCard(props) {
           bgcolor: "white",
         }}
       >
-                {/* RED HEADER */}
+        {/* RED HEADER */}
         <Box
           sx={{
             bgcolor: "#e11d48",
@@ -65,7 +64,7 @@ function TestimonialCard(props) {
           </Box>
         </Box>
 
-                    {/* CONTENT */}
+        {/* CONTENT */}
         <CardContent sx={{ px: 3, py: 3 }}>
           <Typography fontSize={14} color="#333">
             “Thanks to CodeArena, I went from barely understanding loops to solving
@@ -75,39 +74,58 @@ function TestimonialCard(props) {
         </CardContent>
       </Card>
 
-                   {/* QUOTES  */}
+      {/*  DOUBLE QUOTES  */}
       <Box
         sx={{
           position: "absolute",
-          bottom: -34,
-          left: 24,
-          transform: "rotate(180deg)",
-          display: "flex",
+          bottom: -50,
+          left: 15,
           zIndex: 2,
+          display: "flex",
+          gap: 0.5,
         }}
       >
-        <FormatQuoteRoundedIcon
+        <Typography
           sx={{
-            fontSize: 70,
-            color: "#000",
+            fontSize: 80,
+            fontWeight: 900,
+            color: "#e11d48",
+            lineHeight: 1,
+            fontFamily: "serif",
           }}
-        />
+        >
+          “
+        </Typography>
       </Box>
     </Box>
   );
 }
 
-            /* ===== MAIN SECTION ======= */
+/* ===== MAIN SECTION ======= */
 function Testimonials() {
   return (
     <Box
       sx={{
         position: "relative",
         py: 12,
-        overflow: "hidden",
+        overflow: "visible", // allow vectors to peek outside
       }}
     >
-              {/* BACKGROUND IMAGE */}
+      {/* TOP LEFT VECTOR */}
+      <Box
+        component="img"
+        src="/Vector.png" // replace with your vector image path
+        alt="top-left-vector"
+        sx={{
+          position: "absolute",
+          top: "-50px",
+          left: "-50px",
+          width: 120,
+          zIndex: 0,
+        }}
+      />
+
+      {/* BACKGROUND IMAGE */}
       <Box
         component="img"
         src="/Page BG.png"
@@ -122,24 +140,27 @@ function Testimonials() {
         }}
       />
 
-              {/* TITLE */}
+      {/* TITLE */}
       <Typography
         variant="h4"
         fontWeight={700}
         color="white"
         textAlign="center"
         mb={8}
+        sx={{ position: "relative", zIndex: 1 }}
       >
         What Our Students <br /> Say
       </Typography>
 
-                 {/* CARDS*/}
+      {/* CARDS */}
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           gap: 5,
           flexWrap: "wrap",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <TestimonialCard offset={-20} />

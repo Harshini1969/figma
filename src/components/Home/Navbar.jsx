@@ -11,6 +11,10 @@ function Navbar() {
     { name: "MCQ'S", path: "/mcqs" },
   ];
 
+  // Hide login/signup if path starts with /coding or /mcqs
+  const hideAuthButtons =
+    location.pathname.startsWith("/coding") || location.pathname.startsWith("/mcqs");
+
   return (
     <AppBar
       position="static"
@@ -18,8 +22,7 @@ function Navbar() {
       sx={{ bgcolor: "white", color: "black", px: 4 }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-
-              {/* LOGO */}
+        {/* LOGO */}
         <Box
           component={Link}
           to="/"
@@ -31,40 +34,46 @@ function Navbar() {
             cursor: "pointer",
           }}
         >
-          <img src="/logo 1.png" alt="" width="150" height="90" />
-          <Typography fontWeight={900} mt={0.5}>
-            <strong style={{ color: "#4a5cff" }}>Code</strong>
-            <strong style={{ color: "#ff3c3c" }}>Arena</strong>
+          <img src="/logo 1.png" alt="" width="100" height="70" />
+          <Typography fontWeight={900} fontSize={22} mt={-2.0}>
+            <span style={{ color: "#4a5cff" }}>Code</span>
+            <span style={{ color: "#ff3c3c" }}>Arena</span>
           </Typography>
         </Box>
 
         {/* NAV LINKS */}
         <Box sx={{ display: "flex", gap: 4, alignItems: "center" }}>
-          {navLinks.map(function(link) {
-            return (
-              <Typography
-                key={link.name}
-                component={link.path !== "/about" ? Link : "span"}
-                to={link.path !== "/about" ? link.path : undefined}
-                sx={{
-                  textDecoration: "none",
-                  color: "black",
-                  fontWeight: 500,
-                  borderBottom:
-                    location.pathname === link.path ? "2px solid #ff3c3c" : "none",
-                  "&:hover": { color: "#4a5cff" },
-                  paddingBottom: "2px",
-                  cursor: link.path !== "/about" ? "pointer" : "default",
-                }}
-              >
-                {link.name}
-              </Typography>
-            );
-          })}
+          {navLinks.map((link) => (
+            <Typography
+              key={link.name}
+              component={link.path !== "/about" ? Link : "span"}
+              to={link.path !== "/about" ? link.path : undefined}
+              sx={{
+                textDecoration: "none",
+                color: "black",
+                fontWeight: 500,
+                borderBottom:
+                  location.pathname === link.path
+                    ? "2px solid #ff3c3c"
+                    : "none",
+                "&:hover": { color: "#4a5cff" },
+                paddingBottom: "2px",
+                cursor: link.path !== "/about" ? "pointer" : "default",
+              }}
+            >
+              {link.name}
+            </Typography>
+          ))}
         </Box>
 
         {/* ACTION BUTTONS */}
-        <Box sx={{ display: "flex", gap: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 2,
+            visibility: hideAuthButtons ? "hidden" : "visible", // keeps space
+          }}
+        >
           <Button
             component={Link}
             to="/login"
@@ -87,7 +96,6 @@ function Navbar() {
               borderRadius: 3,
               textTransform: "none",
               bgcolor: "#4a5cff",
-              "&:hover": { bgcolor: "#3a4bcc" },
             }}
           >
             Signup

@@ -6,32 +6,73 @@ function SignUp() {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ minHeight: "100vh", display: "flex", alignItems: "center", px: 6 }}>
-      {/* Left */}
-      <Box sx={{ maxWidth: 400 }}>
-        <Typography variant="h4" fontWeight={700}>
+    <Box
+      sx={{
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        px: 6,
+      }}
+    >
+      {/* Left Section */}
+      <Box
+        sx={{
+          width: 600, // ✅ wider textfields (same as Login)
+          pl: 4,      // ✅ slight right move
+        }}
+      >
+        <Typography variant="h4" fontWeight={700} mb={2}>
           Create an account
         </Typography>
 
-        <Typography color="text.secondary" mb={3}>
+        <Typography color="text.secondary" mb={1}>
           its easy! just take a minute and provide the details
         </Typography>
 
-        <TextField fullWidth label="Email or Phone" margin="normal" />
-        <TextField fullWidth label="Full Name" margin="normal" />
-        <TextField fullWidth label="Password" type="password" margin="normal" />
+        <TextField
+          fullWidth
+          label="Email or Phone"
+          margin="normal"
+          InputProps={{ sx: { height: 60 } }}
+        />
+
+        <TextField
+          fullWidth
+          label="Full Name"
+          margin="normal"
+          InputProps={{ sx: { height: 60 } }}
+        />
+
+        <TextField
+          fullWidth
+          label="Password"
+          type="password"
+          margin="normal"
+          InputProps={{ sx: { height: 60 } }}
+        />
+
         <TextField
           fullWidth
           label="Confirm Password"
           type="password"
           margin="normal"
+          InputProps={{ sx: { height: 60 } }}
         />
 
-        <Button fullWidth variant="contained" sx={{ mt: 2 }}>
+        <Button
+          fullWidth
+          variant="contained"
+          sx={{
+            mt: 3,
+            height: 52,
+            borderRadius: "12px", // ✅ rounded button
+          }}
+        >
           Signup
         </Button>
 
-        <Typography textAlign="center" mt={2}>
+        <Typography textAlign="center" mt={4}>
           Already have an account?{" "}
           <Link
             component="button"
@@ -44,8 +85,13 @@ function SignUp() {
       </Box>
 
       {/* Right Image */}
-      <Box sx={{ flex: 1, textAlign: "center" }}>
-        <img src="/Right Side.png" width="350" alt="hero" />
+      <Box sx={{ textAlign: "center" }}>
+        <img
+          src="/Right Side.png"
+          width="450"
+          alt="hero"
+          style={{ maxWidth: "100%" }}
+        />
       </Box>
     </Box>
   );

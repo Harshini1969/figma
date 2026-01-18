@@ -32,10 +32,10 @@ function CodingQuestion() {
           </Typography>
 
           <Typography variant="body2" sx={{ mt: 1 }}>
-            You Have Been Given A Sorted Array/List ARR Consisting Of ‘N’
-            Elements. You Are Also Given An Integer ‘K’.
+            You Have Been Given A Sorted Array/List ARR Consisting Of 'N'
+            Elements. You Are Also Given An Integer 'K'.
             <br />
-            Now, Your Task Is To Find The First And Last Occurrence Of ‘K’ In ARR.
+            Now, Your Task Is To Find The First And Last Occurrence Of 'K' In ARR.
           </Typography>
 
           <Typography variant="body2" sx={{ mt: 1 }}>
@@ -60,7 +60,7 @@ function CodingQuestion() {
         </CardContent>
       </Card>
 
-      {/* Editor Section */}
+            {/* Editor Section */}
       <Card
         sx={{
           maxWidth: "85%",
@@ -90,12 +90,12 @@ function CodingQuestion() {
                 mr: 2,
               }}
             >
-              <pre style={{ margin: 0 }}>
-{`#include <bits/stdc++.h>
-pair<int,int> FirstAndLastPosition(vector<int>& Arr, int N, int K)
-{
-  // Write Your Code Here
-}`}
+              <pre style={{ margin: 0 }}> 
+      {`#include <bits/stdc++.h>
+      pair<int,int> FirstAndLastPosition(vector<int>& Arr, int N, int K)
+      {
+        // Write Your Code Here
+      }`}
               </pre>
             </Box>
 
