@@ -18,8 +18,8 @@ function SignUp() {
       {/* Left Section */}
       <Box
         sx={{
-          width: 600, // ✅ wider textfields (same as Login)
-          pl: 4,      // ✅ slight right move
+          width: 600, 
+          pl: 4,      
         }}
       >
         <Typography variant="h4" fontWeight={700} mb={2}>
@@ -66,7 +66,7 @@ function SignUp() {
           sx={{
             mt: 3,
             height: 52,
-            borderRadius: "12px", // ✅ rounded button
+            borderRadius: "12px",
           }}
         >
           Signup
