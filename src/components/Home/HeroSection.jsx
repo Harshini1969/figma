@@ -69,17 +69,26 @@ function HeroSection() {
           sx={{ position: "relative", zIndex: 1 }}
         >
           Unlock your coding potential through interactive challenges,
-          real-time feedback, and a supportive community.
+          real-time<br/> feedback, and a supportive community.
         </Typography>
 
         <Button
           variant="contained"
           sx={{
-            mt: 3,
-            borderRadius: 3,
-            textTransform: "none",
+            mt: 3, 
             position: "relative",
             zIndex: 1,
+             bgcolor: "#3b82f6",
+             color: "white",
+             borderRadius: "300px",
+             px: 4,
+             height:"50px",
+             fontSize: 14,
+            fontWeight: 600,
+            textTransform: "none",
+            transition: "all 0.3s ease",
+            "&:hover": {
+               bgcolor: "#eb2525",}
           }}
           onClick={() => navigate("/signup")}
         >

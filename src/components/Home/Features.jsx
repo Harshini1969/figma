@@ -85,7 +85,7 @@ function Features() {
                   mb: 3,
 
                   ".MuiCard-root:hover &": {
-                    bgcolor: "#042e71",
+                    bgcolor: "#4585eb",
                   },
                 }}
               >

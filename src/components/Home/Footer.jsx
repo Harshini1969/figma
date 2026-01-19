@@ -20,6 +20,11 @@ function Footer() {
             left: -70,
             width: 70,
             zIndex: 0,
+            "@media (max-width: 600px)": {
+              width: 50,
+              left: -40,
+              bottom: 10,
+            },
           }}
         />
 
@@ -35,6 +40,11 @@ function Footer() {
             width: 60,
             transform: "rotate(180deg)",
             zIndex: 0,
+            "@media (max-width: 600px)": {
+              width: 40,
+              top: -40,
+              right: -10,
+            },
           }}
         />
 
@@ -44,18 +54,24 @@ function Footer() {
             bgcolor: "#0b0f3c",
             color: "white",
             borderRadius: 4,
-            px: 5,
-            py: 4,
+            px: { xs: 2, sm: 5 },
+            py: { xs: 3, sm: 4 },
             position: "relative",
             zIndex: 1,
           }}
         >
           {/* MAIN ROW */}
-          <Box sx={{ display: "flex", gap: 6 }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              gap: { xs: 3, md: 6 },
+            }}
+          >
 
             {/* LEFT COLUMN */}
-            <Box sx={{ minWidth: 200 }}>
-              <img src="/logo 1.png" alt="logo" width="90" />
+            <Box sx={{ minWidth: 200, textAlign: { xs: "center", md: "left" } }}>
+              <img src="/logo 1.png" alt="logo" width={90} />
               <Typography fontWeight={900} fontSize={22} mt={-3}>
                 <span style={{ color: "#4a5cff" }}>Code</span>
                 <span style={{ color: "#ff3c3c" }}>Arena</span>
@@ -68,12 +84,14 @@ function Footer() {
               <Box
                 sx={{
                   display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
                   justifyContent: "space-between",
-                  alignItems: "center",
+                  alignItems: { xs: "center", sm: "flex-start" },
+                  gap: { xs: 2, sm: 0 },
                 }}
               >
                 {/* NAV */}
-                <Box sx={{ display: "flex", gap: 4 }}>
+                <Box sx={{ display: "flex", gap: 4, flexWrap: "wrap", justifyContent: { xs: "center", sm: "flex-start" } }}>
                   {["Home", "About Us", "Prepare", "Dashboard"].map((item) => (
                     <Typography
                       key={item}
@@ -89,7 +107,7 @@ function Footer() {
                 </Box>
 
                 {/* SOCIAL ICONS */}
-                <Box sx={{ display: "flex", gap: 1.5 }}>
+                <Box sx={{ display: "flex", gap: 1.5, mt: { xs: 1, sm: 0 } }}>
                   <IconButton sx={{ color: "white" }}>
                     <FacebookIcon fontSize="small" />
                   </IconButton>
@@ -112,17 +130,20 @@ function Footer() {
               <Box
                 sx={{
                   display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
                   justifyContent: "space-between",
-                  alignItems: "center",
+                  alignItems: { xs: "center", sm: "flex-start" },
+                  gap: { xs: 1.5, sm: 0 },
+                  textAlign: { xs: "center", sm: "left" },
                 }}
               >
-                <Box sx={{ display: "flex", gap: 4 }}>
+                <Box sx={{ display: "flex", gap: 4, flexWrap: "wrap", justifyContent: { xs: "center", sm: "flex-start" } }}>
                   {["Privacy Policy", "Terms of Use", "Legal"].map((item) => (
                     <Typography
                       key={item}
                       sx={{
                         fontSize: 13,
-                        color: "white", // Changed to white
+                        color: "white",
                       }}
                     >
                       {item}
@@ -130,7 +151,7 @@ function Footer() {
                   ))}
                 </Box>
 
-                <Typography fontSize={13} color="white"> 
+                <Typography fontSize={13} color="white">
                   © 2024 Codegnan Destination. All rights reserved.
                 </Typography>
               </Box>

@@ -8,26 +8,37 @@ function SignUp() {
   return (
     <Box
       sx={{
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
+        flexDirection: { xs: "column-reverse", md: "row" }, // stack on mobile
         alignItems: "center",
         justifyContent: "space-between",
-        px: 6,
+        px: { xs: 3, sm: 6 },
+        py: { xs: 4, md: 0 },
+        gap: { xs: 4, md: 0 },
       }}
     >
       {/* Left Section */}
       <Box
         sx={{
-          width: 600, 
-          pl: 4,      
+          width: { xs: "100%", md: 600 }, // full width on mobile
+          pl: { xs: 0, md: 4 },
+          textAlign: { xs: "center", md: "left" }, // center text on mobile
         }}
       >
-        <Typography variant="h4" fontWeight={700} mb={2}>
+        <Typography   variant="h4"
+            fontWeight={700}
+            mb={2}
+            textAlign="center"
+        >
           Create an account
         </Typography>
 
-        <Typography color="text.secondary" mb={1}>
-          its easy! just take a minute and provide the details
+        <Typography 
+            color="text.secondary"
+            mb={1}
+            textAlign="center" >
+          It's easy! Just take a minute and provide the details
         </Typography>
 
         <TextField
@@ -72,7 +83,7 @@ function SignUp() {
           Signup
         </Button>
 
-        <Typography textAlign="center" mt={4}>
+        <Typography textAlign={{ xs: "center", md: "left" }} mt={4}>
           Already have an account?{" "}
           <Link
             component="button"
@@ -85,12 +96,17 @@ function SignUp() {
       </Box>
 
       {/* Right Image */}
-      <Box sx={{ textAlign: "center" }}>
+      <Box
+        sx={{
+          textAlign: "center",
+          width: { xs: "100%", md: "auto" },
+        }}
+      >
         <img
           src="/Right Side.png"
           width="450"
           alt="hero"
-          style={{ maxWidth: "100%" }}
+          style={{ maxWidth: "100%", height: "auto" }}
         />
       </Box>
     </Box>

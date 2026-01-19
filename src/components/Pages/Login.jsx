@@ -7,27 +7,41 @@ function Login() {
   return (
     <Box
       sx={{
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
+        flexDirection: { xs: "column-reverse", md: "row" }, // stack on mobile
         alignItems: "center",
-        justifyContent: "space-between",
-        px: 6,
+        justifyContent: "center",
+        px: { xs: 2, md: 6 },
+        py: { xs: 4, md: 0 },
+        gap: { xs: 4, md: 0 },
       }}
     >
       {/* Left Section */}
       <Box
         sx={{
-          width: 600, 
-          pl: 4,
+          width: { xs: "100%", sm: "80%", md: 600 }, // full width on mobile
+          pl: { xs: 0, md: 4 },
+          textAlign: { xs: "center", md: "left" },
         }}
       >
-        <Typography variant="h4" fontWeight={700} mb={2}>
-          Login to your account
-        </Typography>
+        <Typography
+            variant="h4"
+            fontWeight={700}
+            mb={2}
+            textAlign="center"
+          >
+            Login to your account
+          </Typography>
 
-        <Typography color="text.secondary" mb={1}>
-          its easy! just take a minute and provide the details
-        </Typography>
+          <Typography
+            color="text.secondary"
+            mb={1}
+            textAlign="center" 
+          >
+            It's easy! Just take a minute and provide the details
+          </Typography>
+
 
         <TextField
           fullWidth
@@ -54,7 +68,7 @@ function Login() {
           sx={{
             mt: 3,
             height: 52,
-            borderRadius: "12px", 
+            borderRadius: "12px",
           }}
         >
           Login
@@ -73,12 +87,19 @@ function Login() {
       </Box>
 
       {/* Right Image */}
-      <Box sx={{ textAlign: "center" }}>
+      <Box
+        sx={{
+          textAlign: "center",
+          width: { xs: "100%", sm: "80%", md: "auto" },
+        }}
+      >
         <img
           src="/Right Side.png"
-          width="450"
           alt="hero"
-          style={{ maxWidth: "100%" }}
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+          }}
         />
       </Box>
     </Box>

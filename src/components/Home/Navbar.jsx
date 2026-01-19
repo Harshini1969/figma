@@ -1,7 +1,13 @@
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
-import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { AppBar,Toolbar,Typography,Button,Box,IconButton,Drawer,List,ListItem,ListItemText,
+} from "@mui/material";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
 
 function Navbar() {
+  const location = useLocation();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about", disabled: true },
@@ -9,10 +15,17 @@ function Navbar() {
     { name: "MCQ'S", path: "/mcqs" },
   ];
 
-  return (
-    <AppBar position="static" elevation={0} sx={{ bgcolor: "white", color: "black", px: 4 }}>
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+  const hideAuthButtons =
+    location.pathname.startsWith("/coding") ||
+    location.pathname.startsWith("/mcqs");
 
+  function toggleDrawer(open) {
+    setDrawerOpen(open);
+}
+
+  return (
+    <AppBar position="static" elevation={0} sx={{ bgcolor: "white", color: "black", px: 2 }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         {/* LOGO */}
         <Box
           component={Link}
@@ -31,18 +44,20 @@ function Navbar() {
           </Typography>
         </Box>
 
-        {/* NAV LINKS */}
-        <Box sx={{ display: "flex", gap: 4 }}>
+        {/* Desktop Links */}
+        <Box
+          sx={{
+            display: { xs: "none", md: "flex" },
+            gap: 4,
+            alignItems: "center",
+          }}
+        >
           {navLinks.map(({ name, path, disabled }) =>
             disabled ? (
               <Typography
                 key={name}
                 component="span"
-                sx={{
-                  fontWeight: 700,
-                  cursor: "default",
-                  color: "black",
-                }}
+                sx={{ fontWeight: 700, cursor: "default", color: "black" }}
               >
                 {name}
               </Typography>
@@ -56,50 +71,100 @@ function Navbar() {
                   fontWeight: 700,
                   color: "black",
                   paddingBottom: "2px",
-                  "&.active": {
-                    borderBottom: "2px solid #ff3c3c",
-                  },
-                  "&:hover": {
-                    color: "#4a5cff",
-                  },
+                  "&.active": { borderBottom: "2px solid #ff3c3c" },
+                  "&:hover": { color: "#4a5cff" },
                 }}
               >
                 {name}
               </Typography>
             )
           )}
+
+          {/* Auth Buttons or placeholder */}
+          {!hideAuthButtons ? (
+            <>
+              <Button
+                component={Link}
+                to="/signup"
+                variant="outlined"
+                sx={{
+                  width: "100px",
+                  height: "60px",
+                  borderRadius: "12px",
+                  textTransform: "none",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  color: "#3f3d8f",
+                  border: "1px solid #3f3d8f",
+                  bgcolor: "white",
+                  "&:hover": { bgcolor: "red" },
+                  ml: 2,
+                }}
+              >
+                Signup
+              </Button>
+
+              <Button
+                component={Link}
+                to="/login"
+                variant="contained"
+                sx={{
+                  width: "100px",
+                  height: "60px",
+                  borderRadius: "12px",
+                  textTransform: "none",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  bgcolor: "#3f3d8f",
+                  "&:hover": { bgcolor: "red" },
+                  ml: 1,
+                }}
+              >
+                Login
+              </Button>
+            </>
+          ) : (
+            // Empty box to keep space same
+            <Box sx={{ width: 208, height: 50 }} /> 
+            // 208px = 100 + 100 + margins
+          )}
         </Box>
 
-        {/* AUTH BUTTONS */}
-        <Box sx={{ display: "flex", gap: 2 }}>
-          <Button
-            component={Link}
-            to="/login"
-            variant="outlined"
-            sx={{
-              borderRadius: 3,
-              textTransform: "none",
-              color: "#4a5cff",
-              borderColor: "#4a5cff",
-            }}
-          >
-            Login
-          </Button>
-
-          <Button
-            component={Link}
-            to="/signup"
-            variant="contained"
-            sx={{
-              borderRadius: 3,
-              textTransform: "none",
-              bgcolor: "#4a5cff",
-            }}
-          >
-            Signup
-          </Button>
+        {/* Mobile Hamburger */}
+        <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <IconButton onClick={toggleDrawer(true)} color="inherit">
+            <MenuIcon />
+          </IconButton>
         </Box>
 
+        {/* Drawer for mobile */}
+        <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+          <Box sx={{ width: 250, p: 2 }} role="presentation" onClick={toggleDrawer(false)}>
+            <List>
+              {navLinks.map(({ name, path, disabled }) =>
+                disabled ? (
+                  <ListItem key={name}>
+                    <ListItemText primary={name} />
+                  </ListItem>
+                ) : (
+                  <ListItem button key={name} component={Link} to={path}>
+                    <ListItemText primary={name} />
+                  </ListItem>
+                )
+              )}
+              {!hideAuthButtons && (
+                <>
+                  <ListItem button component={Link} to="/signup">
+                    <ListItemText primary="Signup" />
+                  </ListItem>
+                  <ListItem button component={Link} to="/login">
+                    <ListItemText primary="Login" />
+                  </ListItem>
+                </>
+              )}
+            </List>
+          </Box>
+        </Drawer>
       </Toolbar>
     </AppBar>
   );

@@ -114,17 +114,17 @@ function BuiltFor() {
                   component={Link}
                   to="/signup"
                   sx={{
+                    height:"50px",
                     bgcolor: "#3b82f6",
                     color: "white",
-                    borderRadius: "999px",
+                    borderRadius: "300px",
                     px: 4,
                     py: 1,
                     fontSize: 14,
                     fontWeight: 600,
-                    textTransform: "none",
                     transition: "all 0.3s ease",
                     "&:hover": {
-                      bgcolor: "#2563eb",
+                      bgcolor: "#eb2525",
                     },
                   }}
                 >
