@@ -109,7 +109,7 @@ function HeroSection() {
           src="/Right Side.png"
           alt="main-image"
           sx={{
-            width: 400,
+            width: 450,
             position: "relative",
             zIndex: 2,
             display: "block",

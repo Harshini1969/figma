@@ -39,7 +39,7 @@ function Navbar() {
                 key={name}
                 component="span"
                 sx={{
-                  fontWeight: 500,
+                  fontWeight: 700,
                   cursor: "default",
                   color: "black",
                 }}
@@ -53,7 +53,7 @@ function Navbar() {
                 to={path}
                 sx={{
                   textDecoration: "none",
-                  fontWeight: 500,
+                  fontWeight: 700,
                   color: "black",
                   paddingBottom: "2px",
                   "&.active": {
