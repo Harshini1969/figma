@@ -1,27 +1,18 @@
 import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
-  const location = useLocation(); 
-
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
+    { name: "About Us", path: "/about", disabled: true },
     { name: "Coding", path: "/coding" },
     { name: "MCQ'S", path: "/mcqs" },
   ];
 
-  // Hide login/signup if path starts with /coding or /mcqs
-  const hideAuthButtons =
-    location.pathname.startsWith("/coding") || location.pathname.startsWith("/mcqs");
-
   return (
-    <AppBar
-      position="static"
-      elevation={0}
-      sx={{ bgcolor: "white", color: "black", px: 4 }}
-    >
+    <AppBar position="static" elevation={0} sx={{ bgcolor: "white", color: "black", px: 4 }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+
         {/* LOGO */}
         <Box
           component={Link}
@@ -31,49 +22,56 @@ function Navbar() {
             flexDirection: "column",
             alignItems: "center",
             textDecoration: "none",
-            cursor: "pointer",
           }}
         >
-          <img src="/logo 1.png" alt="" width="100" height="70" />
-          <Typography fontWeight={900} fontSize={22} mt={-2.0}>
+          <img src="/logo 1.png" alt="CodeArena Logo" width="100" height="70" />
+          <Typography fontWeight={900} fontSize={22} mt={-2}>
             <span style={{ color: "#4a5cff" }}>Code</span>
             <span style={{ color: "#ff3c3c" }}>Arena</span>
           </Typography>
         </Box>
 
         {/* NAV LINKS */}
-        <Box sx={{ display: "flex", gap: 4, alignItems: "center" }}>
-          {navLinks.map((link) => (
-            <Typography
-              key={link.name}
-              component={link.path !== "/about" ? Link : "span"}
-              to={link.path !== "/about" ? link.path : undefined}
-              sx={{
-                textDecoration: "none",
-                color: "black",
-                fontWeight: 500,
-                borderBottom:
-                  location.pathname === link.path
-                    ? "2px solid #ff3c3c"
-                    : "none",
-                "&:hover": { color: "#4a5cff" },
-                paddingBottom: "2px",
-                cursor: link.path !== "/about" ? "pointer" : "default",
-              }}
-            >
-              {link.name}
-            </Typography>
-          ))}
+        <Box sx={{ display: "flex", gap: 4 }}>
+          {navLinks.map(({ name, path, disabled }) =>
+            disabled ? (
+              <Typography
+                key={name}
+                component="span"
+                sx={{
+                  fontWeight: 500,
+                  cursor: "default",
+                  color: "black",
+                }}
+              >
+                {name}
+              </Typography>
+            ) : (
+              <Typography
+                key={name}
+                component={NavLink}
+                to={path}
+                sx={{
+                  textDecoration: "none",
+                  fontWeight: 500,
+                  color: "black",
+                  paddingBottom: "2px",
+                  "&.active": {
+                    borderBottom: "2px solid #ff3c3c",
+                  },
+                  "&:hover": {
+                    color: "#4a5cff",
+                  },
+                }}
+              >
+                {name}
+              </Typography>
+            )
+          )}
         </Box>
 
-        {/* ACTION BUTTONS */}
-        <Box
-          sx={{
-            display: "flex",
-            gap: 2,
-            visibility: hideAuthButtons ? "hidden" : "visible", // keeps space
-          }}
-        >
+        {/* AUTH BUTTONS */}
+        <Box sx={{ display: "flex", gap: 2 }}>
           <Button
             component={Link}
             to="/login"
@@ -101,6 +99,7 @@ function Navbar() {
             Signup
           </Button>
         </Box>
+
       </Toolbar>
     </AppBar>
   );

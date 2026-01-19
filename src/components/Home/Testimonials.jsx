@@ -108,13 +108,13 @@ function Testimonials() {
       sx={{
         position: "relative",
         py: 12,
-        overflow: "visible", // allow vectors to peek outside
+        overflow: "hidden", 
       }}
     >
       {/* TOP LEFT VECTOR */}
       <Box
         component="img"
-        src="/Vector.png" // replace with your vector image path
+        src="/Vector.png" 
         alt="top-left-vector"
         sx={{
           position: "absolute",
