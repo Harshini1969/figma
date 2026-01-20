@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { AppBar,Toolbar,Typography,Button,Box,IconButton,Drawer,List,ListItem,ListItemText,
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -19,9 +29,9 @@ function Navbar() {
     location.pathname.startsWith("/coding") ||
     location.pathname.startsWith("/mcqs");
 
-  function toggleDrawer(open) {
+  const toggleDrawer = (open) => () => {
     setDrawerOpen(open);
-}
+  };
 
   return (
     <AppBar position="static" elevation={0} sx={{ bgcolor: "white", color: "black", px: 2 }}>
@@ -80,7 +90,6 @@ function Navbar() {
             )
           )}
 
-          {/* Auth Buttons or placeholder */}
           {!hideAuthButtons ? (
             <>
               <Button
@@ -124,9 +133,8 @@ function Navbar() {
               </Button>
             </>
           ) : (
-            // Empty box to keep space same
-            <Box sx={{ width: 208, height: 50 }} /> 
-            // 208px = 100 + 100 + margins
+            <Box sx={{ width: 208, height: 50 }} />
+            /* 208px = 100 + 100 + margins */
           )}
         </Box>
 
@@ -137,9 +145,13 @@ function Navbar() {
           </IconButton>
         </Box>
 
-        {/* Drawer for mobile */}
+        {/* Mobile Drawer */}
         <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
-          <Box sx={{ width: 250, p: 2 }} role="presentation" onClick={toggleDrawer(false)}>
+          <Box
+            sx={{ width: 250, p: 2 }}
+            role="presentation"
+            onClick={toggleDrawer(false)}
+          >
             <List>
               {navLinks.map(({ name, path, disabled }) =>
                 disabled ? (
@@ -152,6 +164,7 @@ function Navbar() {
                   </ListItem>
                 )
               )}
+
               {!hideAuthButtons && (
                 <>
                   <ListItem button component={Link} to="/signup">
